@@ -1,9 +1,6 @@
-# Flet app
+# Gerenciador de treinos
 
-A simple Flet app.
+Um app de gerenciamento de treinos, que possibilita o usuário
+adicionar os treinos, com possibilidade de adicionar o tipo de treino
+o grupo muscular, as repetições, series...
 
-To run the app:
-
-```
-flet run [app_directory]
-```
