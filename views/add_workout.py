@@ -1,5 +1,6 @@
 import flet as ft
 from forms import add_workout
+from controllers import route_control
 
 class AddWorkoutView():
     def __init__(self,page:ft.Page):
@@ -7,15 +8,10 @@ class AddWorkoutView():
 
         self.workout_form = add_workout.WorkoutForm()
         
-
      # Inicializando a janela
         self.page.views.append(self.create_add_workout_view())
         self.page.update()
 
-    def go_home(self,e):
-        self.page.views.pop()
-        top_view = self.page.views[-1]
-        self.page.go(top_view.route)
             
     def create_add_workout_view(self):
         return ft.View(
@@ -30,6 +26,6 @@ class AddWorkoutView():
             appbar=ft.AppBar(
                 title=ft.Text('Adicionar novo Treino'),
                 center_title=True,
-                leading=ft.IconButton(ft.icons.ARROW_BACK,on_click=self.go_home)
+                leading=ft.IconButton(ft.icons.ARROW_BACK,on_click=lambda _: route_control.go_home(self.page))
             )
         )

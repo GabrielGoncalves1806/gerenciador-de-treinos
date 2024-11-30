@@ -1,5 +1,6 @@
 import flet as ft
-from views import add_workout
+from controllers import route_control
+
 class HomeView():
     def __init__(self,page:ft.Page):
         # Definição das informções da janela
@@ -12,25 +13,31 @@ class HomeView():
         self.page.views.append(self.create_homeview())
         self.page.update()
 
-    def go_to(self,route):
-        print(route)
-        if route == '/add_workout':
-            add_workout.AddWorkoutView(self.page)
-
+    # Função que cria a janela atual
     def create_homeview(self):
         return ft.View(
             route="/home",
             controls=[
                 ft.Column(
                     [
-                        ft.Image(src='assets/logo.jpeg',border_radius=200,height=100,width=100),
-                        ft.Text(
-                            "Seu guia de treinos diário",
-                            size=16,
-                            color=ft.colors.GREY_600,
-                            text_align="center",
+                        # Cabeçalho com foto
+                        ft.Container(
+                            content=ft.Column(
+                                [
+                                    ft.Image(src='assets/logo.jpeg',border_radius=200,height=100,width=100),
+                                    ft.Text(
+                                        "Seu guia de treinos diário",
+                                        size=16,
+                                        color=ft.colors.GREY_600,
+                                        text_align="center",
+                                    ),
+                                ],
+                                horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                            ),
                         ),
+                        
                         ft.Divider(),
+
                         # Opções
                         ft.Container(
                             content=ft.Column(
@@ -38,7 +45,7 @@ class HomeView():
                                     ft.ElevatedButton(
                                         text="Adicionar Exercício",
                                         icon=ft.icons.ADD,
-                                        on_click=lambda _: self.go_to('/add_workout'),
+                                        on_click=lambda _: route_control.go_to(self.page,'/add_workout'),
                                         width=300
                                     ),
 
