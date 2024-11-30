@@ -1,7 +1,7 @@
 import flet as ft
-from views import home_view
+from views import homeview
 
 def main(page:ft.Page):
-    home_view.HomeView(page)
+    homeview.HomeView(page)
 
 ft.app(main)

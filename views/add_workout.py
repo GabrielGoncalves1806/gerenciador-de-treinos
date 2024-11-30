@@ -1,8 +1,12 @@
 import flet as ft
+from forms import add_workout
 
 class AddWorkoutView():
     def __init__(self,page:ft.Page):
         self.page = page
+
+        self.workout_form = add_workout.WorkoutForm()
+        
 
      # Inicializando a janela
         self.page.views.append(self.create_add_workout_view())
@@ -12,15 +16,14 @@ class AddWorkoutView():
         self.page.views.pop()
         top_view = self.page.views[-1]
         self.page.go(top_view.route)
-        
-
+            
     def create_add_workout_view(self):
         return ft.View(
             route="/add_workout",
             controls=[
                 ft.Column(
                     [
-                        ft.Text('Add')
+                        self.workout_form.get_form(),
                     ]
                 )
             ],
