@@ -4,13 +4,22 @@ from random import choice
 
 def main(page:ft.Page):
     cores = [
-        ft.Colors.AMBER,
-        ft.Colors.RED,
-        ft.Colors.GREEN,
-        ft.Colors.PURPLE,
-        ft.Colors.PINK,
+        ft.Colors.RED,        # Para Peito
+        ft.Colors.BLUE,       # Para Costas
+        ft.Colors.ORANGE,     # Para Ombros
+        ft.Colors.YELLOW,      # Para Trapézio
+        ft.Colors.GREEN,      # Para Tríceps
+        ft.Colors.PURPLE,     # Para Bíceps
+        ft.Colors.BROWN,      # Para Antebraços
+        ft.Colors.LIGHT_GREEN, # Para Quadríceps
+        ft.Colors.GREY_200,  # Para Posteriores da Coxa
+        ft.Colors.PINK,       # Para Glúteos
+        ft.Colors.LIGHT_BLUE, # Para Panturrilhas
+        ft.Colors.TEAL,       # Para Abdômen
     ]
 
+    # cores = [valor for nome, valor in vars(ft.Colors).items() if not nome.startswith("_")]
+    
     cards = ft.Row(expand=1, wrap=False, scroll="always")
     for x in range(1,6):
         cor = choice(cores)
@@ -36,7 +45,7 @@ def main(page:ft.Page):
     page.add(
         ft.Column(
             [
-                workout_card.WorkoutCard('peito',ft.Colors.GREEN)
+                cards
             ]
         )
         

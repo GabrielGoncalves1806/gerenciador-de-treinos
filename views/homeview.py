@@ -52,7 +52,7 @@ class HomeView():
                                     ft.ElevatedButton(
                                         text="Sugestão de Treinos",
                                         icon=ft.icons.FITNESS_CENTER,
-                                        
+                                        on_click=lambda _: route_control.go_to(self.page,'/workout_sugestion'),
                                         width=300
                                     ),
                                 ]
