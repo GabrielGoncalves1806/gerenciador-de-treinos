@@ -36,8 +36,7 @@ def main(page:ft.Page):
     page.add(
         ft.Column(
             [
-                ft.Text('Sugestão de treino'),
-                cards
+                workout_card.WorkoutCard('peito',ft.Colors.GREEN)
             ]
         )
         

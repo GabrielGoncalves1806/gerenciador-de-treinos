@@ -14,7 +14,7 @@ class WorkoutForm():
         ft.dropdown.Option("Posteriores da Coxa"),
         ft.dropdown.Option("Glúteos"),
         ft.dropdown.Option("Panturrilhas"),
-        ft.dropdown.Option("Abdominais"),
+        ft.dropdown.Option("Abdômen"),
         ]
     
         self.nome_exercicio = ft.TextField(label='Nome do Exercicio',max_length=30)
