@@ -1,10 +1,14 @@
 {
     "peito":"peito.png",
     "costas":"costas.png",
-    "biceps":"biceps.png",
-    "pernas":"pernas.png",
-    "abdomen":"abdomem.png",
-    "gluteos":"gluteos.png",
+    "ombros":"ombros.png",
+    "trapezio":"trapezio.png",
     "triceps":"biceps.png",
-    "trapezio":"costas.png"
+    "biceps":"biceps.png",
+    "antebracos":"antebraco.png",
+    "quadriceps":"quadriceps.png",
+    "posteriores de coxa":"posterior.png",
+    "gluteos":"gluteos.png",
+    "panturrilhas":"panturrilhas.png",
+    "abdomen":"abdomen.png"
 }

@@ -28,7 +28,7 @@ class HomeView():
                                     ft.Text(
                                         "Seu guia de treinos diário",
                                         size=16,
-                                        color=ft.colors.GREY_600,
+                                        color=ft.Colors.GREY_600,
                                         text_align="center",
                                     ),
                                 ],
@@ -44,14 +44,14 @@ class HomeView():
                                 [
                                     ft.ElevatedButton(
                                         text="Adicionar Exercício",
-                                        icon=ft.icons.ADD,
+                                        icon=ft.Icons.ADD,
                                         on_click=lambda _: route_control.go_to(self.page,'/add_workout'),
                                         width=300
                                     ),
 
                                     ft.ElevatedButton(
                                         text="Sugestão de Treinos",
-                                        icon=ft.icons.FITNESS_CENTER,
+                                        icon=ft.Icons.FITNESS_CENTER,
                                         on_click=lambda _: route_control.go_to(self.page,'/workout_sugestion'),
                                         width=300
                                     ),
@@ -65,8 +65,8 @@ class HomeView():
             bottom_appbar=ft.BottomAppBar(
                 content=ft.Row(
                     [
-                        ft.IconButton(ft.icons.MENU),
-                        ft.IconButton(ft.icons.SETTINGS)
+                        ft.IconButton(ft.Icons.MENU),
+                        ft.IconButton(ft.Icons.SETTINGS)
                     ],
                     alignment=ft.MainAxisAlignment.SPACE_EVENLY
                 ),
