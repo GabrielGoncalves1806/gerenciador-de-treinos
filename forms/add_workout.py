@@ -1,29 +1,18 @@
 import flet as ft
+from models import grupos_musculares
 
 class WorkoutForm():
     def __init__(self):
-        self.grupos_musculares = [ 
-        ft.dropdown.Option("Peito"),
-        ft.dropdown.Option("Costas"),
-        ft.dropdown.Option("Ombros"),
-        ft.dropdown.Option("Trapézio"),
-        ft.dropdown.Option("Tríceps"),
-        ft.dropdown.Option("Bíceps"),
-        ft.dropdown.Option("Antebraços"),
-        ft.dropdown.Option("Quadríceps"),
-        ft.dropdown.Option("Posteriores da Coxa"),
-        ft.dropdown.Option("Glúteos"),
-        ft.dropdown.Option("Panturrilhas"),
-        ft.dropdown.Option("Abdômen"),
-        ]
-    
+        self.grupos_musculares = grupos_musculares.get_grupos()
+
         self.nome_exercicio = ft.TextField(label='Nome do Exercicio',max_length=30)
 
-        self.grupo_muscular = ft.Dropdown(
+        self.grupo_muscular_drop = ft.Dropdown(
                 label="Grupos musculares",
-                options=self.grupos_musculares
             )
+        
         self.series = ft.TextField(label='Séries',keyboard_type="NUMBER")
+
         self.repeticoes = ft.TextField(label='Repetições',keyboard_type="NUMBER")
 
         self.botao_salvar = ft.ElevatedButton(
@@ -31,19 +20,16 @@ class WorkoutForm():
             on_click=self.save_values
         )
 
+        for grupos in self.grupos_musculares['grupos_musculares']:
+            self.grupo_muscular_drop.options.append(ft.dropdown.Option(grupos))
+        
         self.form = ft.Column(
             [
                 self.nome_exercicio,
-                self.grupo_muscular,
+                self.grupo_muscular_drop,
                 self.series,
                 self.repeticoes,
                 self.botao_salvar,
-                ft.ElevatedButton(
-                                text="Sugestão de Treinos",
-                                icon=ft.icons.FITNESS_CENTER,
-                                
-                                width=300
-                            ),
             ],
             spacing=10
         )
