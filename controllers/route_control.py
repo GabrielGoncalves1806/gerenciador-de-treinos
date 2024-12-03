@@ -1,12 +1,14 @@
-from views import add_workout, workout_sugestion
+from views import add_workout, workout_sugestion, homeview
 
 # Função de navegação entre rotas/janelas
-def go_to(page,route):
+def go_to(page,route,permission=None):
         print(route)
         if route == '/add_workout':
             add_workout.AddWorkoutView(page)
         elif route == '/workout_sugestion':
             workout_sugestion.WorkoutSugestionView(page)
+        elif route == "/home":
+              homeview.HomeView(page,permission)
 
 
 # Função que volta até a home

@@ -1,9 +1,9 @@
 import flet as ft
-from models import database
+from models import database_control
 
 class WorkoutForm():
     def __init__(self):
-        self.grupos_musculares = database.get_muscles()
+        self.grupos_musculares = database_control.get_muscles()
 
         self.nome_exercicio = ft.TextField(label='Nome do Exercicio',max_length=30)
 

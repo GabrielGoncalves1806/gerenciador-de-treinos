@@ -1,6 +1,6 @@
 import flet as ft
 from controllers import route_control
-from models import database
+from models import database_control
 from widgets import workout_card
 
 
@@ -8,7 +8,7 @@ class WorkoutSugestionView():
     def __init__(self,page:ft.Page):
         self.page = page
 
-        self.grupos_musculares = database.get_muscles()
+        self.grupos_musculares = database_control.get_muscles()
         self.cards = ft.Row(expand=1, wrap=False, scroll="always")
 
         self.page.views.append(self.create_workout_sugestion_view())

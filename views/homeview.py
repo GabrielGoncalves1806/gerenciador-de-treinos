@@ -2,12 +2,13 @@ import flet as ft
 from controllers import route_control
 
 class HomeView():
-    def __init__(self,page:ft.Page):
+    def __init__(self,page:ft.Page,permission:bool):
         # Definição das informções da janela
         self.page = page
         self.page.window.height = 667
         self.page.window.width = 375
         self.page.vertical_alignment = "center"
+        self.permission = permission
 
         # Inicializando a janela
         self.page.views.append(self.create_homeview())
@@ -56,7 +57,8 @@ class HomeView():
                                         width=300
                                     ),
                                 ]
-                            )                            
+                            ),
+                            data="test"                            
                         ),  
                     ],
                     horizontal_alignment=ft.CrossAxisAlignment.CENTER,
