@@ -1,11 +1,11 @@
 import flet as ft
-from models import muscle_sprite
+from models import muscle_sprite,database
 
 class WorkoutCard():
     def __init__(self,grupo_muscular):
         self.grupo_muscular = grupo_muscular
         self.cor = ft.Colors.GREEN
-        self.sprite = muscle_sprite.get_muscle_sprite(grupo_muscular.lower())
+        self.sprite = database.get_sprite_path(grupo_muscular)
 
     def card(self):
         return ft.Container(

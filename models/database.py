@@ -1,11 +1,13 @@
+import json
 import sqlite3
 
 def database_connection():
-    return sqlite3.connect('data/database.db')
+    database = sqlite3.connect('data/database.db')
+    cursor = database.cursor()
+    return database, cursor
 
 def get_muscles():
-    database = database_connection()
-    cursor = database.cursor()
+    database, cursor = database_connection()
     cursor.execute("SELECT * FROM muscle_group")
     rows = cursor.fetchall()
     muscles = []
@@ -15,6 +17,27 @@ def get_muscles():
     return muscles
 
 
+def get_sprite_path(grupo_muscular):
+    database, cursor = database_connection()
+    cursor.execute("SELECT sprite_path FROM muscle_group WHERE nome = ?",(grupo_muscular.lower(),))
+    sprite = cursor.fetchone()
+    sprite_path = sprite[0]
+    return sprite_path
+
+
+
+# def add_sprite():
+#     database = database_connection()
+#     cursor = database.cursor()
+#     with open("data/sprites.json") as file:
+#         sprites = json.load(file)
+#         for sprite in sprites:
+#             print(sprites[sprite])
+#     # cursor.execute("ALTER TABLE muscle_group ADD COLUMN sprite_path TEXT")
+#             cursor.execute("UPDATE muscle_group SET sprite_path = ? WHERE nome = ?",(sprites[sprite],sprite,))
+#     database.commit()
+
+# add_sprite()
 
 
 # with open("data/grupos_musculares.json") as file:

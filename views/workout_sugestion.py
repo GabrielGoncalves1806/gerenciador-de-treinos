@@ -1,6 +1,6 @@
 import flet as ft
 from controllers import route_control
-from models import grupos_musculares, database
+from models import database
 from widgets import workout_card
 
 

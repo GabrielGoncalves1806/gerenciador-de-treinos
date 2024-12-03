@@ -1,5 +1,5 @@
 import flet as ft
-from models import grupos_musculares, database
+from models import database
 
 class WorkoutForm():
     def __init__(self):
