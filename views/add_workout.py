@@ -26,6 +26,6 @@ class AddWorkoutView():
             appbar=ft.AppBar(
                 title=ft.Text('Adicionar novo Treino'),
                 center_title=True,
-                leading=ft.IconButton(ft.icons.ARROW_BACK,on_click=lambda _: route_control.go_home(self.page))
+                leading=ft.IconButton(ft.Icons.ARROW_BACK,on_click=lambda _: route_control.go_home(self.page))
             )
         )

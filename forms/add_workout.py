@@ -1,9 +1,9 @@
 import flet as ft
-from models import grupos_musculares
+from models import grupos_musculares, database
 
 class WorkoutForm():
     def __init__(self):
-        self.grupos_musculares = grupos_musculares.get_grupos()
+        self.grupos_musculares = database.get_muscles()
 
         self.nome_exercicio = ft.TextField(label='Nome do Exercicio',max_length=30)
 
@@ -20,7 +20,7 @@ class WorkoutForm():
             on_click=self.save_values
         )
 
-        for grupos in self.grupos_musculares['grupos_musculares']:
+        for grupos in self.grupos_musculares:
             self.grupo_muscular_drop.options.append(ft.dropdown.Option(grupos))
         
         self.form = ft.Column(
