@@ -24,9 +24,6 @@ def get_sprite_path(grupo_muscular):
     sprite_path = sprite[0]
     return sprite_path
 
-
-
-
 ################################ funções de teste ################################
 
 def create_table():
