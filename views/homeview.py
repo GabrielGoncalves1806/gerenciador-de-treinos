@@ -86,7 +86,6 @@ class HomeView():
                     ],
                     alignment=ft.MainAxisAlignment.SPACE_EVENLY
                 ),
-                
             ),
             appbar=ft.AppBar(
                 title=ft.Text('Treinos FIT'),

@@ -19,7 +19,7 @@ class AddWorkoutView():
             controls=[
                 ft.Column(
                     [
-                        self.workout_form.get_form(),
+                        self.workout_form.get_controls(),
                     ]
                 )
             ],

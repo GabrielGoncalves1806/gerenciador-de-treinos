@@ -29,8 +29,7 @@ class LoginPage():
                 
                 if self.login_form.tipo_usuario_group.value == "aluno":
                     route_control.go_to(self.page,"/home",permission=False)
-
-
+                    
             # Caso contrário exibe uma mensagem genérica
             else:
                 self.login_form.error_msg.value = "Usuário ou senha incorretos!"
@@ -45,13 +44,14 @@ class LoginPage():
             # Conteúdo principal
             ft.Column(
                 controls=[
+
+                    # Imagem/Icone com silhueta de user
                     ft.Container(
                         content=ft.Icon(name=ft.Icons.PERSON,size=100),
                         border=ft.border.all(1),
                         border_radius=150
                     ),
                     
-                   
                     ft.Text("Login", size=24, weight="bold", color="blue"),
                     
                     # Campos de texto exportados do form

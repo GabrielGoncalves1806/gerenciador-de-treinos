@@ -11,9 +11,9 @@ class WorkoutForm():
                 label="Grupos musculares",
             )
         
-        self.series = ft.TextField(label='Séries',keyboard_type="NUMBER")
+        self.series = ft.TextField(label='Séries',keyboard_type="NUMBER",visible=False)
 
-        self.repeticoes = ft.TextField(label='Repetições',keyboard_type="NUMBER")
+        self.repeticoes = ft.TextField(label='Repetições',keyboard_type="NUMBER",visible=False)
 
         self.botao_salvar = ft.ElevatedButton(
             text="Salvar",
@@ -21,18 +21,7 @@ class WorkoutForm():
         )
 
         for grupos in self.grupos_musculares:
-            self.grupo_muscular_drop.options.append(ft.dropdown.Option(grupos))
-        
-        self.form = ft.Column(
-            [
-                self.nome_exercicio,
-                self.grupo_muscular_drop,
-                self.series,
-                self.repeticoes,
-                self.botao_salvar,
-            ],
-            spacing=10
-        )
+            self.grupo_muscular_drop.options.append(ft.dropdown.Option(grupos)) 
 
     def save_values(self,event):
         dados = self.get_values()
@@ -45,7 +34,16 @@ class WorkoutForm():
             "series": self.series.value,
             "repeticoes": self.repeticoes.value,
         }
-
-    def get_form(self):
-        """Retorna o layout completo do formulário"""
-        return self.form
+    
+    # Retorna os controles para a tela
+    def get_controls(self):
+        return ft.Column(
+            [
+                self.nome_exercicio,
+                self.grupo_muscular_drop,
+                self.series,
+                self.repeticoes,
+                self.botao_salvar,
+            ],
+            spacing=10
+        )

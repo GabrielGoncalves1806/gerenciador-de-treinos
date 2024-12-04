@@ -3,6 +3,7 @@ import flet as ft
 # Formulario de login
 class LoginForm():
     def __init__(self):
+
         # Criação dos campos necessários
         self.username_field = ft.TextField(
             label="Nome de usuário",
@@ -25,6 +26,7 @@ class LoginForm():
         )
         self.error_msg = ft.Text(value="", color=ft.Colors.RED, visible=False)
     
+    # Retorna os dados dos campos preenchidos
     def get_dados(self):
         return {
             "tipo_usuario":self.tipo_usuario_group.value,
@@ -32,9 +34,9 @@ class LoginForm():
             "password":self.password_field.value
         }
     
+    # Valida se todos os campos foram preenchidos
     def is_valid(self):
         dados = self.get_dados()
-        # Valida se todos os campos foram preenchidos
         if not dados['username'] or not dados['password'] or not dados["tipo_usuario"]:
             self.error_msg.value = "Preencha todos os campos para prosseguir."
             self.error_msg.visible = True
@@ -42,8 +44,8 @@ class LoginForm():
         self.error_msg.visible = False
         return True
     
+    # Retorna os controles para a tela
     def get_controls(self):
-        # Retorna os controles para a tela
         return ft.Column(
             [
                 self.username_field,
