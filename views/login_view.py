@@ -18,16 +18,18 @@ class LoginPage():
         # Caso o retorno do is_valid retorne True ele verifica no banco 
         # se as infomações recebidas correspondem 
         if self.login_form.is_valid():          
-            permite_logar = login.validar_login(
-                tabela=self.login_form.tipo_usuario,
-                username=self.login_form.username,
-                senha=self.login_form.password
-            )
+            permite_logar = login.validar_login(self.login_form.get_dados())
 
             # Se o validador de login do banco retorna True
             # significa que o usuário está apto a logar
             if permite_logar:
-                route_control.go_to(self.page,"/home")
+                
+                if self.login_form.tipo_usuario_group.value == "professor":
+                    route_control.go_to(self.page,"/home",permission=True)
+                
+                if self.login_form.tipo_usuario_group.value == "aluno":
+                    route_control.go_to(self.page,"/home",permission=False)
+
 
             # Caso contrário exibe uma mensagem genérica
             else:

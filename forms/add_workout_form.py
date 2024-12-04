@@ -41,7 +41,7 @@ class WorkoutForm():
     def get_values(self):
         return {
             "nome_exercicio": self.nome_exercicio.value,
-            "grupo_muscular": self.grupo_muscular.value,
+            "grupo_muscular": self.grupo_muscular_drop.value,
             "series": self.series.value,
             "repeticoes": self.repeticoes.value,
         }

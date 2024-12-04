@@ -1,12 +1,12 @@
 import flet as ft
-from forms import add_workout
+from forms import add_workout_form
 from controllers import route_control
 
 class AddWorkoutView():
     def __init__(self,page:ft.Page):
         self.page = page
 
-        self.workout_form = add_workout.WorkoutForm()
+        self.workout_form = add_workout_form.WorkoutForm()
         
      # Inicializando a janela
         self.page.views.append(self.create_add_workout_view())

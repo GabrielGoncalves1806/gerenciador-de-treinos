@@ -10,9 +10,23 @@ class HomeView():
         self.page.vertical_alignment = "center"
         self.permission = permission
 
+        self.add_workout_button = ft.ElevatedButton(
+                                        text="Adicionar Exercício",
+                                        icon=ft.Icons.ADD,
+                                        width=300,
+                                        on_click=lambda _: route_control.go_to(self.page,'/add_workout'),
+                                        visible=False
+                                    )
+        
         # Inicializando a janela
         self.page.views.append(self.create_homeview())
+        self.check_permission()
         self.page.update()
+
+    def check_permission(self):
+        if self.permission:
+            self.add_workout_button.visible = True
+
 
     # Função que cria a janela atual
     def create_homeview(self):
@@ -43,13 +57,13 @@ class HomeView():
                         ft.Container(
                             content=ft.Column(
                                 [
-                                    ft.ElevatedButton(
-                                        text="Adicionar Exercício",
-                                        icon=ft.Icons.ADD,
-                                        on_click=lambda _: route_control.go_to(self.page,'/add_workout'),
-                                        width=300
-                                    ),
-
+                                    # ft.ElevatedButton(
+                                    #     text="Adicionar Exercício",
+                                    #     icon=ft.Icons.ADD,
+                                    #     on_click=lambda _: route_control.go_to(self.page,'/add_workout'),
+                                    #     width=300
+                                    # ),
+                                    self.add_workout_button,
                                     ft.ElevatedButton(
                                         text="Sugestão de Treinos",
                                         icon=ft.Icons.FITNESS_CENTER,
@@ -76,7 +90,8 @@ class HomeView():
             ),
             appbar=ft.AppBar(
                 title=ft.Text('Treinos FIT'),
-                automatically_imply_leading=False,
+                leading=ft.IconButton(ft.Icons.ARROW_BACK,on_click=lambda _: route_control.go_to(self.page,"/login_page")),
+                
                 center_title=True
             )
         )

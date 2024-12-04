@@ -40,11 +40,16 @@ def create_table():
             """)
     database.commit()
 
-create_table()
+
 
 def add_professor():
     database, cursor = database_connection()
-    cursor.execute("INSERT INTO professores (username,email,senha) VALUES (?,?,?)",("gab","teste@gmail.com","123456"))
+    cursor.execute("INSERT INTO professores (username, email, senha, nome) VALUES (?,?,?,?)",("gab","teste@gmail.com","123456"))
+    database.commit()
+
+def add_aluno():
+    database, cursor = database_connection()
+    cursor.execute("INSERT INTO alunos (username, nome, email, senha) VALUES (?,?,?,?)",("joao","joao eudes","teste@gmail.com","123456"))
     database.commit()
 
 def alterar_tabela():

@@ -25,24 +25,17 @@ class LoginForm():
         )
         self.error_msg = ft.Text(value="", color=ft.Colors.RED, visible=False)
     
-    # Definimos umas propriedades pra pegar os valores dos campos posteriormentes
-
-    @property
-    def username(self):
-        return self.username_field.value.strip()
-    
-    @property
-    def password(self):
-        return self.password_field.value.strip()
-    
-    @property
-    def tipo_usuario(self):
-        return self.tipo_usuario_group.value
-    
+    def get_dados(self):
+        return {
+            "tipo_usuario":self.tipo_usuario_group.value,
+            "username":self.username_field.value,
+            "password":self.password_field.value
+        }
     
     def is_valid(self):
+        dados = self.get_dados()
         # Valida se todos os campos foram preenchidos
-        if not self.username or not self.password or not self.tipo_usuario:
+        if not dados['username'] or not dados['password'] or not dados["tipo_usuario"]:
             self.error_msg.value = "Preencha todos os campos para prosseguir."
             self.error_msg.visible = True
             return False
