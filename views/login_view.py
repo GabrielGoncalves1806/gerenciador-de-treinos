@@ -15,6 +15,8 @@ class LoginPage():
         self.page.update()
 
     def login(self,e):
+        # Caso o retorno do is_valid retorne True ele verifica no banco 
+        # se as infomações recebidas correspondem 
         if self.login_form.is_valid():          
             permite_logar = login.validar_login(
                 tabela=self.login_form.tipo_usuario,
@@ -22,18 +24,18 @@ class LoginPage():
                 senha=self.login_form.password
             )
 
+            # Se o validador de login do banco retorna True
+            # significa que o usuário está apto a logar
             if permite_logar:
                 route_control.go_to(self.page,"/home")
 
+            # Caso contrário exibe uma mensagem genérica
             else:
                 self.login_form.error_msg.value = "Usuário ou senha incorretos!"
                 self.login_form.error_msg.visible = True
                 self.page.update()
 
-        else:
-            self.login_form.error_msg.value = "Preencha todos os campos para prosseguir",
-            self.login_form.error_msg.visible = True
-            self.page.update()
+        self.page.update()
 
     def create_login_page(self):
         return ft.View(
@@ -49,8 +51,11 @@ class LoginPage():
                     
                    
                     ft.Text("Login", size=24, weight="bold", color="blue"),
-                    # Campos de texto
+                    
+                    # Campos de texto exportados do form
+                    
                     self.login_form.get_controls(),
+                    
                     # Botão de login
                     ft.ElevatedButton(
                         text="Entrar",
@@ -61,7 +66,7 @@ class LoginPage():
                     ),
                 ],
                 horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-                spacing=20,  # Espaçamento entre elementos
+                spacing=20,
             ),
             # Rodapé
             ft.Container(

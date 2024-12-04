@@ -1,10 +1,11 @@
 from models.database_control import database_connection
 
+# Função que valida o login com os dados fornecidos no formulario
+# e verifica se correspondem com o banco de dados
+
 def validar_login(tabela,username,senha):
-    print("iniciando validação")
     database, cursor = database_connection()
 
-    
     if tabela == "professor":
         cursor.execute("SELECT senha FROM professores WHERE username = ?",(username,))
     elif tabela == "aluno":

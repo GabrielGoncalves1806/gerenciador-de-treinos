@@ -27,24 +27,32 @@ def get_sprite_path(grupo_muscular):
 
 
 
-################################ funções de teste ###################################
+################################ funções de teste ################################
 
 def create_table():
     database, cursor = database_connection()
     cursor.execute("""
-                   CREATE TABLE IF NOT EXISTS alunos (
-                   id INTEGER PRIMARY KEY,
-                   username TEXT,
-                   email TEXT,
-                   senha TEXT,
-                   id_professor INTEGER
-                   )
-                   """)
+                CREATE TABLE IF NOT EXISTS fichas_de_treino (
+                id INTEGER PRIMARY KEY,
+                id_aluno INTEGER,
+                id_exercicio INTEGER,
+                series INTEGER,
+                repeticoes INTEGER,
+                carga INTEGER
+                )
+            """)
     database.commit()
+
+create_table()
 
 def add_professor():
     database, cursor = database_connection()
     cursor.execute("INSERT INTO professores (username,email,senha) VALUES (?,?,?)",("gab","teste@gmail.com","123456"))
+    database.commit()
+
+def alterar_tabela():
+    database, cursor = database_connection()
+    cursor.execute("ALTER TABLE alunos ADD COLUMN nome TEXT")
     database.commit()
 
 

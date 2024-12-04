@@ -1,7 +1,9 @@
 import flet as ft
 
+# Formulario de login
 class LoginForm():
     def __init__(self):
+        # Criação dos campos necessários
         self.username_field = ft.TextField(
             label="Nome de usuário",
             width=300,
@@ -23,6 +25,8 @@ class LoginForm():
         )
         self.error_msg = ft.Text(value="", color=ft.Colors.RED, visible=False)
     
+    # Definimos umas propriedades pra pegar os valores dos campos posteriormentes
+
     @property
     def username(self):
         return self.username_field.value.strip()
@@ -35,12 +39,12 @@ class LoginForm():
     def tipo_usuario(self):
         return self.tipo_usuario_group.value
     
+    
     def is_valid(self):
         # Valida se todos os campos foram preenchidos
         if not self.username or not self.password or not self.tipo_usuario:
             self.error_msg.value = "Preencha todos os campos para prosseguir."
             self.error_msg.visible = True
-
             return False
         self.error_msg.visible = False
         return True
