@@ -1,26 +1,26 @@
 import sqlite3
 
-data_base = sqlite3.connect('empresa.db')
+data_base = sqlite3.connect("empresa.db")
 cursor = data_base.cursor()
 
-# cursor.execute('''
+# cursor.execute("""
 #     CREATE TABLE IF NOT EXISTS funcionarios (
 #         id INTEGER PRIMARY KEY,
 #         nome TEXT,
 #         cargo TEXT,
 #         salario REAL
 #     )
-# ''')
+# """)
 
 #cursor.execute("ALTER TABLE funcionarios ADD COLUMN departamento_id INTEGER")
 
-# cursor.execute('''
+# cursor.execute("""
 #         CREATE TABLE IF NOT EXISTS departamentos (
 #         id INTEGER PRIMARY KEY,
 #         nome TEXT,
 #         local TEXT          
 #     )
-# ''')
+# """)
 
 def add_departamento(nome,local):
     cursor.execute("INSERT INTO departamentos (nome, local) VALUES (?,?)",(nome,local))
@@ -31,11 +31,11 @@ def add_funcionario(nome,cargo, salario):
     data_base.commit()
 
 def listar_funcionarios():
-    cursor.execute('''
+    cursor.execute("""
         SELECT funcionarios.nome, funcionarios.cargo, funcionarios.salario, departamentos.nome AS departamento
         FROM funcionarios
         LEFT JOIN departamentos ON funcionarios.departamento_id = departamentos.id
-    ''')
+    """)
     rows = cursor.fetchall()
     for row in rows:
         print(row)
@@ -80,11 +80,11 @@ def alterar_departamento(funcionario, departamento):
 
 # add_funcionario("João", "Gerente", 5000.00)
 
-alterar_departamento('Carlos','administrativo')
-# alterar_departamento('Maria','recursos humanos')
+alterar_departamento("Carlos","administrativo")
+# alterar_departamento("Maria","recursos humanos")
 listar_funcionarios() 
 
-# add_departamento('administrativo','local')
-# add_departamento('recursos humanos','filial')
+# add_departamento("administrativo","local")
+# add_departamento("recursos humanos","filial")
 
 data_base.close()

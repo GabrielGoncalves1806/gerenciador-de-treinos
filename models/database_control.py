@@ -1,8 +1,7 @@
-import json
 import sqlite3
 
 def database_connection():
-    database = sqlite3.connect('data/database.db')
+    database = sqlite3.connect("data/database.db")
     cursor = database.cursor()
     return database, cursor
 
@@ -36,6 +35,7 @@ def add_exercicio(nome_exercicio,grupo_muscular):
         id_grupo_muscular = cursor.fetchone()
         cursor.execute("INSERT INTO exercicios (nome, id_grupo_muscular) VALUES (?,?)",(nome_exercicio,id_grupo_muscular[0]))
         database.commit()
+        print(nome_exercicio,grupo_muscular)
         return True
     except Exception as e:
         return False
@@ -63,8 +63,6 @@ def create_table():
                 )
             """)
     database.commit()
-
-
 
 def add_professor():
     database, cursor = database_connection()
@@ -98,7 +96,7 @@ def alterar_tabela():
 
 # with open("data/grupos_musculares.json") as file:
 #     musculos = json.load(file)
-#     for muscle in musculos['grupos_musculares']:
+#     for muscle in musculos["grupos_musculares"]:
 #         cursor.execute("INSERT INTO muscle_group (nome) VALUES (?)",(muscle.lower(),))
 #         data_base.commit()
 

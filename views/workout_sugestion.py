@@ -7,6 +7,7 @@ from widgets import workout_card
 class WorkoutSugestionView():
     def __init__(self,page:ft.Page):
         self.page = page
+        self.page.scroll = True
 
         self.grupos_musculares = database_control.get_muscles()
 
@@ -27,8 +28,21 @@ class WorkoutSugestionView():
             controls=[
                 ft.Column(
                     [
-                        self.cards,
-                        self.lista_exercicios
+                        # Cards
+                        ft.Column(
+                            [
+                                self.cards,
+                            ]
+                        ),
+                        
+                        ft.Divider(),
+                        ft.Column(
+                            [
+                                self.lista_exercicios
+                            ],
+                            scroll=True
+                        ),
+                        
                     ]
                 )
             ],
@@ -36,5 +50,14 @@ class WorkoutSugestionView():
                     title=ft.Text("Sugestão de treinos"),
                     center_title=True,
                     leading=ft.IconButton(icon=ft.Icons.ARROW_BACK,on_click=lambda _: route_control.go_home(self.page))
-                )
+                ),
+            bottom_appbar=ft.BottomAppBar(
+                content=ft.Row(
+                    [
+                        ft.IconButton(ft.Icons.MENU),
+                        ft.IconButton(ft.Icons.SETTINGS)
+                    ],
+                    alignment=ft.MainAxisAlignment.SPACE_EVENLY
+                ),
+            ),
         )

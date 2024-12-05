@@ -28,9 +28,9 @@ def main(page:ft.Page):
             ft.Container(
                 content=ft.Column(
                     [
-                        ft.Text(f'Treino de Peito {x}',size=20),
-                        ft.Image(src='../assets/body_parts/costas.png',width=100,height=100),
-                        ft.ElevatedButton(text='Detalhes',color=cor)
+                        ft.Text(f"Treino de Peito {x}",size=20),
+                        ft.Image(src="../assets/body_parts/costas.png",width=100,height=100),
+                        ft.ElevatedButton(text="Detalhes",color=cor)
                     ],
                     horizontal_alignment=ft.CrossAxisAlignment.CENTER
                 ),

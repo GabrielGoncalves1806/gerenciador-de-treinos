@@ -7,14 +7,12 @@ class LoginForm():
         # Criação dos campos necessários
         self.username_field = ft.TextField(
             label="Nome de usuário",
-            value="gabriel",
             width=300,
             keyboard_type=ft.KeyboardType.TEXT,
             hint_text="Insira seu nome de usuário",
         )
         self.password_field = ft.TextField(
             label="Senha",
-            value="123456",
             width=300,
             password=True,
             can_reveal_password=True,
@@ -39,7 +37,7 @@ class LoginForm():
     # Valida se todos os campos foram preenchidos
     def is_valid(self):
         dados = self.get_dados()
-        if not dados['username'] or not dados['password'] or not dados["tipo_usuario"]:
+        if not dados["username"] or not dados["password"] or not dados["tipo_usuario"]:
             self.error_msg.value = "Preencha todos os campos para prosseguir."
             self.error_msg.visible = True
             return False

@@ -24,7 +24,7 @@ class WorkoutCard():
                     [
                         ft.Text(value=self.grupo_muscular.upper(),size=20),
                         ft.Image(src=f"../assets/body_parts/{self.sprite}",width=100,height=100),
-                        ft.ElevatedButton(text='Detalhes',color=self.cor,on_click=lambda e: self.atualiza_lista())
+                        ft.ElevatedButton(text="Detalhes",color=self.cor,on_click=lambda e: self.atualiza_lista())
                     ],
                     horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                 ),

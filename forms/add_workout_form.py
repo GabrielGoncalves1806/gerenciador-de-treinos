@@ -13,6 +13,7 @@ class WorkoutForm():
 
         self.grupo_muscular_drop = ft.Dropdown(
                 label="Grupos musculares",
+
             )
         
         self.series = ft.TextField(label="Séries",keyboard_type="NUMBER",visible=False)
@@ -24,8 +25,8 @@ class WorkoutForm():
             on_click=lambda e: self.save_values()
         )
 
-        for grupos in self.grupos_musculares:
-            self.grupo_muscular_drop.options.append(ft.dropdown.Option(grupos)) 
+        for grupo in self.grupos_musculares:
+            self.grupo_muscular_drop.options.append(ft.dropdown.Option(grupo.capitalize())) 
 
     def save_values(self):
         dados = self.get_values()

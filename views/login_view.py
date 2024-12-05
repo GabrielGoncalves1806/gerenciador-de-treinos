@@ -85,6 +85,13 @@ class LoginPage():
                 
             ),
         ],
+        appbar=ft.AppBar(
+            title=ft.Text("Gestor de Treinos"),
+            center_title=True,
+            automatically_imply_leading=False
+
+
+        ),
         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
         vertical_alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
     )
