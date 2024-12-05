@@ -12,7 +12,7 @@ def get_muscles():
     rows = cursor.fetchall()
     muscles = []
     for row in rows:
-        muscles.append(row[1].capitalize())
+        muscles.append(row[1])
     database.close()
     return muscles
 
@@ -40,12 +40,13 @@ def add_exercicio(nome_exercicio,grupo_muscular):
     except Exception as e:
         return False
     
-def get_exercicios():
+def get_exercicios(grupo_muscular):
     database, cursor = database_connection()
-    cursor.execute("SELECT * FROM exercicios")
+    cursor.execute("SELECT id FROM grupos_musculares WHERE nome = ?",(grupo_muscular,))
+    id_grupo = cursor.fetchone()
+    cursor.execute("SELECT nome FROM exercicios WHERE id_grupo_muscular = ?",(id_grupo[0],))
     exercicios = cursor.fetchall()
     return exercicios
-
 
 ################################ funções de teste ################################
 

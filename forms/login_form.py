@@ -7,12 +7,14 @@ class LoginForm():
         # Criação dos campos necessários
         self.username_field = ft.TextField(
             label="Nome de usuário",
+            value="gabriel",
             width=300,
             keyboard_type=ft.KeyboardType.TEXT,
             hint_text="Insira seu nome de usuário",
         )
         self.password_field = ft.TextField(
             label="Senha",
+            value="123456",
             width=300,
             password=True,
             can_reveal_password=True,

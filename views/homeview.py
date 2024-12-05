@@ -10,7 +10,7 @@ class HomeView():
         self.page.window.width = 375
         self.page.scroll = True
         self.page.vertical_alignment = "center"
-        
+
         self.permission = permission
 
         self.workout_list_widget = ft.Column()
@@ -31,7 +31,7 @@ class HomeView():
         self.page.update()
     
     def get_workout_list(self):
-        self.workout_list_widget.controls.append(workout_list.WorkoutList().get_control())
+        self.workout_list_widget.controls.append(workout_list.WorkoutList('peito').get_control())
 
     def check_permission(self):
         if self.permission:
@@ -75,8 +75,6 @@ class HomeView():
                                         on_click=lambda _: route_control.go_to(self.page,'/workout_sugestion'),
                                         width=300
                                     ),
-
-                                    self.workout_list_widget,
                                 ]
                             ),                           
                         ),  
