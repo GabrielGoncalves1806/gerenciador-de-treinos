@@ -7,7 +7,7 @@ class WorkoutCard():
         self.cor = ft.Colors.GREEN
         self.sprite = database_control.get_sprite_path(grupo_muscular)
 
-    def card(self):
+    def get_control(self):
         return ft.Container(
                 content=ft.Column(
                     [

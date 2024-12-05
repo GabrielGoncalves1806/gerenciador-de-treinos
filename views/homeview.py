@@ -1,5 +1,6 @@
 import flet as ft
 from controllers import route_control
+from widgets import workout_list
 
 class HomeView():
     def __init__(self,page:ft.Page,permission:bool):
@@ -7,8 +8,12 @@ class HomeView():
         self.page = page
         self.page.window.height = 667
         self.page.window.width = 375
+        self.page.scroll = True
         self.page.vertical_alignment = "center"
+        
         self.permission = permission
+
+        self.workout_list_widget = ft.Column()
 
         self.add_workout_button = ft.ElevatedButton(
                                         text="Adicionar Exercício",
@@ -19,9 +24,14 @@ class HomeView():
                                     )
         
         # Inicializando a janela
+        
         self.page.views.append(self.create_homeview())
+        self.get_workout_list()
         self.check_permission()
         self.page.update()
+    
+    def get_workout_list(self):
+        self.workout_list_widget.controls.append(workout_list.WorkoutList().get_control())
 
     def check_permission(self):
         if self.permission:
@@ -57,22 +67,18 @@ class HomeView():
                         ft.Container(
                             content=ft.Column(
                                 [
-                                    # ft.ElevatedButton(
-                                    #     text="Adicionar Exercício",
-                                    #     icon=ft.Icons.ADD,
-                                    #     on_click=lambda _: route_control.go_to(self.page,'/add_workout'),
-                                    #     width=300
-                                    # ),
                                     self.add_workout_button,
+
                                     ft.ElevatedButton(
                                         text="Sugestão de Treinos",
                                         icon=ft.Icons.FITNESS_CENTER,
                                         on_click=lambda _: route_control.go_to(self.page,'/workout_sugestion'),
                                         width=300
                                     ),
+
+                                    self.workout_list_widget,
                                 ]
-                            ),
-                            data="test"                            
+                            ),                           
                         ),  
                     ],
                     horizontal_alignment=ft.CrossAxisAlignment.CENTER,

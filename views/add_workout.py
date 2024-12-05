@@ -6,7 +6,7 @@ class AddWorkoutView():
     def __init__(self,page:ft.Page):
         self.page = page
 
-        self.workout_form = add_workout_form.WorkoutForm()
+        self.workout_form = add_workout_form.WorkoutForm(self.page)
         
      # Inicializando a janela
         self.page.views.append(self.create_add_workout_view())

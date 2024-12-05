@@ -17,7 +17,7 @@ class WorkoutSugestionView():
         
     def get_cards(self):
         for grupo in self.grupos_musculares:
-            self.cards.controls.append(workout_card.WorkoutCard(grupo).card())
+            self.cards.controls.append(workout_card.WorkoutCard(grupo).get_control())
 
     def create_workout_sugestion_view(self):
         return ft.View(

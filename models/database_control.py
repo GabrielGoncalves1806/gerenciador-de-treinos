@@ -8,7 +8,7 @@ def database_connection():
 
 def get_muscles():
     database, cursor = database_connection()
-    cursor.execute("SELECT * FROM muscle_group")
+    cursor.execute("SELECT * FROM grupos_musculares")
     rows = cursor.fetchall()
     muscles = []
     for row in rows:
@@ -16,13 +16,36 @@ def get_muscles():
     database.close()
     return muscles
 
-
 def get_sprite_path(grupo_muscular):
     database, cursor = database_connection()
-    cursor.execute("SELECT sprite_path FROM muscle_group WHERE nome = ?",(grupo_muscular.lower(),))
+    cursor.execute("SELECT sprite_path FROM grupos_musculares WHERE nome = ?",(grupo_muscular.lower(),))
     sprite = cursor.fetchone()
     sprite_path = sprite[0]
     return sprite_path
+
+def get_grupo_muscular(id_grupo_muscular):
+    database, cursor = database_connection()
+    cursor.execute("SELECT nome FROM grupos_musculares WHERE id = ?",(id_grupo_muscular,))
+    nome = cursor.fetchone()
+    return nome[0]
+
+def add_exercicio(nome_exercicio,grupo_muscular):
+    database, cursor = database_connection()
+    try:
+        cursor.execute("SELECT id FROM grupos_musculares WHERE nome = ?",(grupo_muscular,))
+        id_grupo_muscular = cursor.fetchone()
+        cursor.execute("INSERT INTO exercicios (nome, id_grupo_muscular) VALUES (?,?)",(nome_exercicio,id_grupo_muscular[0]))
+        database.commit()
+        return True
+    except Exception as e:
+        return False
+    
+def get_exercicios():
+    database, cursor = database_connection()
+    cursor.execute("SELECT * FROM exercicios")
+    exercicios = cursor.fetchall()
+    return exercicios
+
 
 ################################ funções de teste ################################
 

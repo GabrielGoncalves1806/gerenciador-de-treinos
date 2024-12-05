@@ -27,9 +27,9 @@ class LoginPage():
                 if self.login_form.tipo_usuario_group.value == "professor":
                     route_control.go_to(self.page,"/home",permission=True)
                 
-                if self.login_form.tipo_usuario_group.value == "aluno":
+                elif self.login_form.tipo_usuario_group.value == "aluno":
                     route_control.go_to(self.page,"/home",permission=False)
-                    
+
             # Caso contrário exibe uma mensagem genérica
             else:
                 self.login_form.error_msg.value = "Usuário ou senha incorretos!"
@@ -75,7 +75,7 @@ class LoginPage():
                 content=ft.Column(
                     controls=[
                         ft.Text("Versão 1.0.0", size=12, weight="light"),
-                        ft.Text("Contato: suporte@exemplo.com", size=12, weight="light"),
+                        ft.Text("Contato: gabrielgoncalves1806@gmail.com", size=12, weight="light"),
                     ],
                     horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                     spacing=5
