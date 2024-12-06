@@ -14,29 +14,15 @@ class HomeView():
         self.permission = permission
 
         self.workout_list_widget = ft.Column()
-
-        self.add_workout_button = ft.ElevatedButton(
-                                        text="Adicionar Exercício",
-                                        icon=ft.Icons.ADD,
-                                        width=300,
-                                        on_click=lambda _: route_control.go_to(self.page,"/add_workout"),
-                                        visible=False
-                                    )
         
         # Inicializando a janela
         
         self.page.views.append(self.create_homeview())
         self.get_workout_list()
-        self.check_permission()
         self.page.update()
     
     def get_workout_list(self):
         self.workout_list_widget.controls.append(workout_list.WorkoutList("peito").get_control())
-
-    def check_permission(self):
-        if self.permission:
-            self.add_workout_button.visible = True
-
 
     # Função que cria a janela atual
     def create_homeview(self):
@@ -67,7 +53,13 @@ class HomeView():
                         ft.Container(
                             content=ft.Column(
                                 [
-                                    self.add_workout_button,
+                                    ft.ElevatedButton(
+                                        text="Adicionar Exercício",
+                                        icon=ft.Icons.ADD,
+                                        width=300,
+                                        on_click=lambda _: route_control.go_to(self.page,"/add_workout"),
+                                        visible=self.permission
+                                    ),
 
                                     ft.ElevatedButton(
                                         text="Sugestão de Treinos",
@@ -85,8 +77,7 @@ class HomeView():
             bottom_appbar=ft.BottomAppBar(
                 content=ft.Row(
                     [
-                        ft.IconButton(ft.Icons.MENU),
-                        ft.IconButton(ft.Icons.SETTINGS)
+                        ft.IconButton(ft.Icons.SETTINGS,visible=self.permission)
                     ],
                     alignment=ft.MainAxisAlignment.SPACE_EVENLY
                 ),
@@ -94,7 +85,15 @@ class HomeView():
             appbar=ft.AppBar(
                 title=ft.Text("Treinos FIT"),
                 leading=ft.IconButton(ft.Icons.ARROW_BACK,on_click=lambda _: route_control.go_to(self.page,"/login_page")),
-                
-                center_title=True
+                center_title=True,
+                actions=[
+                    ft.PopupMenuButton(
+                        icon=ft.Icons.MENU,
+                        items=[
+                            ft.PopupMenuItem(text="Central de alunos",on_click=lambda e: route_control.go_to(self.page,"/central_alunos")),
+                            ft.PopupMenuItem(text="opção 2"),
+                        ]
+                    ),
+                ] 
             )
         )

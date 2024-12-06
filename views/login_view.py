@@ -6,6 +6,7 @@ from forms import login_form
 class LoginPage():
     def __init__(self,page:ft.Page):
         self.page = page
+        self.page.theme_mode = "dark"
         self.page.window.height = 667
         self.page.window.width = 375
 
