@@ -1,4 +1,5 @@
 import sqlite3
+from models import criptografia_senha
 
 def database_connection():
     database = sqlite3.connect("data/database.db")
@@ -28,6 +29,12 @@ def get_grupo_muscular(id_grupo_muscular):
     nome = cursor.fetchone()
     return nome[0]
 
+def get_alunos():
+    database, cursor = database_connection()
+    cursor.execute("SELECT * FROM alunos ")
+    alunos = cursor.fetchall()
+    return alunos
+
 def add_exercicio(nome_exercicio,grupo_muscular):
     database, cursor = database_connection()
     try:
@@ -47,6 +54,13 @@ def get_exercicios(grupo_muscular):
     cursor.execute("SELECT nome FROM exercicios WHERE id_grupo_muscular = ?",(id_grupo[0],))
     exercicios = cursor.fetchall()
     return exercicios
+
+def add_aluno(username,nome,email,senha,id_professor):
+    senha_cripto = criptografia_senha.criptografia(senha)
+
+    database, cursor = database_connection()
+    cursor.execute("INSERT INTO alunos (username, nome, email, senha, id_professor) VALUES (?,?,?,?)",(username,nome,email,senha_cripto,id_professor))
+    database.commit()
 
 ################################ funções de teste ################################
 
@@ -69,10 +83,7 @@ def add_professor():
     cursor.execute("INSERT INTO professores (username, email, senha, nome) VALUES (?,?,?,?)",("gab","teste@gmail.com","123456"))
     database.commit()
 
-def add_aluno():
-    database, cursor = database_connection()
-    cursor.execute("INSERT INTO alunos (username, nome, email, senha) VALUES (?,?,?,?)",("joao","joao eudes","teste@gmail.com","123456"))
-    database.commit()
+
 
 def alterar_tabela():
     database, cursor = database_connection()

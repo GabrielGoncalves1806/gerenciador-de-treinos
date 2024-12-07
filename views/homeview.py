@@ -57,14 +57,14 @@ class HomeView():
                                         text="Adicionar Exercício",
                                         icon=ft.Icons.ADD,
                                         width=300,
-                                        on_click=lambda _: route_control.go_to(self.page,"/add_workout"),
+                                        on_click=lambda e: route_control.go_to(self.page,"/add_workout"),
                                         visible=self.permission
                                     ),
 
                                     ft.ElevatedButton(
                                         text="Sugestão de Treinos",
                                         icon=ft.Icons.FITNESS_CENTER,
-                                        on_click=lambda _: route_control.go_to(self.page,"/workout_sugestion"),
+                                        on_click=lambda e: route_control.go_to(self.page,"/workout_sugestion"),
                                         width=300
                                     ),
                                 ]
@@ -84,7 +84,7 @@ class HomeView():
             ),
             appbar=ft.AppBar(
                 title=ft.Text("Treinos FIT"),
-                leading=ft.IconButton(ft.Icons.ARROW_BACK,on_click=lambda _: route_control.go_to(self.page,"/login_page")),
+                leading=ft.IconButton(ft.Icons.ARROW_BACK,on_click=lambda e: route_control.go_to(self.page,"/login_page")),
                 center_title=True,
                 actions=[
                     ft.PopupMenuButton(

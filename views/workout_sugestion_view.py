@@ -49,7 +49,7 @@ class WorkoutSugestionView():
             appbar=ft.AppBar(
                     title=ft.Text("Sugestão de treinos"),
                     center_title=True,
-                    leading=ft.IconButton(icon=ft.Icons.ARROW_BACK,on_click=lambda _: route_control.go_home(self.page))
+                    leading=ft.IconButton(icon=ft.Icons.ARROW_BACK,on_click=lambda e: route_control.go_to(self.page,"/home"))
                 ),
             bottom_appbar=ft.BottomAppBar(
                 content=ft.Row(
