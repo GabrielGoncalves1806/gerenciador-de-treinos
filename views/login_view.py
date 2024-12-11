@@ -26,10 +26,10 @@ class LoginPage():
             if permite_logar:
                 
                 if self.login_form.tipo_usuario_group.value == "professor":
-                    route_control.go_to(page=self.page,route="/home",permission=True)
+                    route_control.go_to(page=self.page,route="/home")
                 
                 elif self.login_form.tipo_usuario_group.value == "aluno":
-                    route_control.go_to(self.page,"/home",permission=False)
+                    route_control.go_to(self.page,"/aluno_page")
 
             # Caso contrário exibe uma mensagem genérica
             else:
@@ -41,7 +41,7 @@ class LoginPage():
 
     def create_login_page(self):
         return ft.View(
-            route='/login',
+            route="/login",
         controls=[
             # Conteúdo principal
             ft.Column(
@@ -66,8 +66,10 @@ class LoginPage():
                         on_click=self.login,
                         width=300,
                         color="white",
-                        bgcolor="blue"
+                        bgcolor="blue",
                     ),
+                    
+                    ft.TextButton("Criar conta",on_click=lambda e: route_control.go_to(self.page,route="/add_account")),
                 ],
                 horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                 spacing=20,

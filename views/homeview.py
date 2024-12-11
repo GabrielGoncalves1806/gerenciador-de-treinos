@@ -11,8 +11,6 @@ class HomeView():
         self.page.scroll = True
         self.page.vertical_alignment = "center"
 
-        self.permission = permission
-
         self.workout_list_widget = ft.Column()
         
         # Inicializando a janela
@@ -58,10 +56,7 @@ class HomeView():
                                         icon=ft.Icons.ADD,
                                         width=300,
                                         on_click=lambda e: route_control.go_to(self.page,"/add_workout"),
-                                        visible=self.permission
                                     ),
-
-                                    ft.TextField(label="teste"),
 
                                     ft.ElevatedButton(
                                         text="Sugestão de Treinos",
@@ -79,7 +74,7 @@ class HomeView():
             bottom_appbar=ft.BottomAppBar(
                 content=ft.Row(
                     [
-                        ft.IconButton(ft.Icons.SETTINGS,visible=self.permission)
+                        ft.IconButton(ft.Icons.SETTINGS)
                     ],
                     alignment=ft.MainAxisAlignment.SPACE_EVENLY
                 ),

@@ -9,9 +9,9 @@ def validar_login(dados):
     database, cursor = database_connection()
 
     if dados["tipo_usuario"] == "professor":
-        cursor.execute("SELECT senha FROM professores WHERE username = ?",(dados["username"],))
+        cursor.execute("SELECT senha FROM professores WHERE email = ?",(dados["email"],))
     elif dados["tipo_usuario"] == "aluno":
-        cursor.execute("SELECT senha FROM alunos WHERE username = ?",(dados["username"],))
+        cursor.execute("SELECT senha FROM alunos WHERE email = ?",(dados["email"],))
     senha_db = cursor.fetchone()
     try:
         if senha_db[0] == criptografia_senha.criptografia(dados["password"]):

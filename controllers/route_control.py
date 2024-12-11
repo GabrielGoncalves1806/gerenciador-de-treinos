@@ -1,4 +1,11 @@
-from views import add_workout_view, homeview, login_view, workout_sugestion_view, central_aluno_view
+import views
+import views.add_workout_view
+import views.central_aluno_view
+import views.create_account_view
+import views.homeview
+import views.aluno_pageview
+import views.login_view
+import views.workout_sugestion_view
 
 # Função de navegação entre rotas/janelas
 
@@ -12,15 +19,25 @@ def go_to(page, route, permission=None):
             return
             
     if route == "/add_workout":
-        add_workout_view.AddWorkoutView(page)
+        views.add_workout_view.AddWorkoutView(page)
+        
     elif route == "/workout_sugestion":
-        workout_sugestion_view.WorkoutSugestionView(page)
+        views.workout_sugestion_view.WorkoutSugestionView(page)
+        
     elif route == "/home":
-        homeview.HomeView(page, permission)
+        views.homeview.HomeView(page, permission)
+        
     elif route == "/login_page":
-        login_view.LoginPage(page)
+        views.login_view.LoginPage(page)
+        
     elif route == "/central_alunos":
-        central_aluno_view.CentralAlunos(page)
+        views.central_aluno_view.CentralAlunos(page)
+        
+    elif route == "/add_account":
+        views.create_account_view.CreateAccount(page)
+        
+    elif route == "/aluno_page":
+        views.aluno_pageview.AlunoPage(page)
 
 
 # Função que volta até a home

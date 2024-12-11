@@ -6,11 +6,11 @@ class LoginForm():
     def __init__(self):
 
         # Criação dos campos necessários
-        self.username_field = ft.TextField(
-            label="Nome de usuário",
+        self.email_field = ft.TextField(
+            label="E-mail",
             width=300,
             keyboard_type=ft.KeyboardType.TEXT,
-            hint_text="Insira seu nome de usuário",
+            hint_text="Insira seu email de login",
         )
         self.password_field = ft.TextField(
             label="Senha",
@@ -34,14 +34,14 @@ class LoginForm():
     def get_dados(self):
         return {
             "tipo_usuario":self.tipo_usuario_group.value,
-            "username":self.username_field.value,
+            "email":self.email_field.value,
             "password":self.password_field.value
         }
     
     # Valida se todos os campos foram preenchidos
     def is_valid(self):
         dados = self.get_dados()
-        if not dados["username"] or not dados["password"] or not dados["tipo_usuario"]:
+        if not dados["email"] or not dados["password"] or not dados["tipo_usuario"]:
             self.error_msg.value = "Preencha todos os campos para prosseguir."
             self.error_msg.visible = True
             return False
@@ -52,7 +52,7 @@ class LoginForm():
     def get_controls(self):
         return ft.Column(
             [
-                self.username_field,
+                self.email_field,
                 self.password_field,
                 self.error_msg,
                 ft.Row(
