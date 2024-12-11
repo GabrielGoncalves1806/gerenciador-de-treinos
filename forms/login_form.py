@@ -1,4 +1,5 @@
 import flet as ft
+from models import database_control
 
 # Formulario de login
 class LoginForm():
@@ -25,6 +26,9 @@ class LoginForm():
             ])
         )
         self.error_msg = ft.Text(value="", color=ft.Colors.RED, visible=False)
+
+    def get_professor(self):
+        professor = database_control.get_professor_id(self.username_field)
     
     # Retorna os dados dos campos preenchidos
     def get_dados(self):

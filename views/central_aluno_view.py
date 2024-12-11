@@ -5,9 +5,9 @@ from controllers import route_control
 class CentralAlunos():
     def __init__(self,page:ft.Page):
         self.page = page
-        self.page.dialog = add_alunos.DialogAddAluno().get_controls()
+        #self.page.dialog = add_alunos.DialogAddAluno().get_controls()
         
-        self.page.floating_action_button = ft.FloatingActionButton(icon=ft.Icons.ADD, on_click=lambda e: self.show_dialog())
+        
         self.lista_alunos_widget = lista_alunos.ListaAlunos(self.page).get_controls()
         self.page.views.append(self.create_central_view())
         self.page.update()

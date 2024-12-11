@@ -26,7 +26,7 @@ class LoginPage():
             if permite_logar:
                 
                 if self.login_form.tipo_usuario_group.value == "professor":
-                    route_control.go_to(self.page,"/home",permission=True)
+                    route_control.go_to(page=self.page,route="/home",permission=True)
                 
                 elif self.login_form.tipo_usuario_group.value == "aluno":
                     route_control.go_to(self.page,"/home",permission=False)
@@ -41,6 +41,7 @@ class LoginPage():
 
     def create_login_page(self):
         return ft.View(
+            route='/login',
         controls=[
             # Conteúdo principal
             ft.Column(

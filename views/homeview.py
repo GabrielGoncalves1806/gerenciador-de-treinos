@@ -61,6 +61,8 @@ class HomeView():
                                         visible=self.permission
                                     ),
 
+                                    ft.TextField(label="teste"),
+
                                     ft.ElevatedButton(
                                         text="Sugestão de Treinos",
                                         icon=ft.Icons.FITNESS_CENTER,

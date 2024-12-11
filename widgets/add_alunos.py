@@ -1,7 +1,9 @@
 import flet as ft
 
 class DialogAddAluno():
-    def __init__(self):
+    def __init__(self,nome,email):
+        self.nome = nome
+        self.email = email
         pass
         
     def salvar(self):
@@ -12,8 +14,9 @@ class DialogAddAluno():
             title=ft.Text("Editar"),
             content=ft.Column(
                 [
-                    ft.TextField(label="Nome do Aluno"),
-                    ft.TextField(label="Email"),
+                    # ft.TextField(value=sellabel="Usuário",tooltip="Nome que o alunos vai usar para logar"),
+                    ft.TextField(value=self.nome,label="Nome do Aluno",tooltip="Nome completo do aluno"),
+                    ft.TextField(value=self.email,label="E-mail"),
                 ]
             ),
             actions=[

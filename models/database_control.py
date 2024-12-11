@@ -35,6 +35,13 @@ def get_alunos():
     alunos = cursor.fetchall()
     return alunos
 
+def get_professor_id(username):
+    database, cursor = database_connection()
+    cursor.execute("SELECT id FROM professores WHERE username = ?",(username))
+    professor = cursor.fetchone()
+    print(professor)
+
+
 def add_exercicio(nome_exercicio,grupo_muscular):
     database, cursor = database_connection()
     try:

@@ -30,7 +30,7 @@ class ListaAlunos():
                         ft.Container(
                             content=ft.Row(
                                 [
-                                    # ft.IconButton(icon=ft.Icons.EDIT, on_click=lambda e, nome=alunos[5], email=alunos[2]: self.show_dialog(nome,email))
+                                    ft.IconButton(icon=ft.Icons.EDIT, on_click=lambda e, nome=alunos[5], email=alunos[2]: self.show_dialog(nome,email))
                                 ],
                                 alignment=ft.MainAxisAlignment.CENTER,
                                 
@@ -45,7 +45,6 @@ class ListaAlunos():
             )
 
     def show_dialog(self,nome,email):
-        print(self.lista_alunos)
         self.add_dialog = add_alunos.DialogAddAluno(nome,email).get_controls()
         self.page.dialog = self.add_dialog
         self.add_dialog.open = True
