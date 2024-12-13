@@ -1,6 +1,6 @@
 
 from models.database_control import database_connection
-from models import criptografia_senha
+from models import criptografia_senha,temporary_session
 
 # Função que valida o login com os dados fornecidos no formulario
 # e verifica se correspondem com o banco de dados
@@ -15,6 +15,7 @@ def validar_login(dados):
     senha_db = cursor.fetchone()
     try:
         if senha_db[0] == criptografia_senha.criptografia(dados["password"]):
+            
             return True
         else:
             return False

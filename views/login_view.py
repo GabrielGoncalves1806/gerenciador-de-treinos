@@ -1,6 +1,6 @@
 import flet as ft
 from controllers import route_control
-from models import login
+from models import login,temporary_session
 from forms import login_form
 
 class LoginPage():
@@ -11,7 +11,7 @@ class LoginPage():
         self.page.window.width = 375
 
         self.login_form = login_form.LoginForm()
-
+            
         self.page.views.append(self.create_login_page())
         self.page.update()
 
@@ -24,12 +24,15 @@ class LoginPage():
             # Se o validador de login do banco retorna True
             # significa que o usuário está apto a logar
             if permite_logar:
-                
+                dados_form = self.login_form.get_dados()
                 if self.login_form.tipo_usuario_group.value == "professor":
+                    temporary_session.LocalSession(dados_form["email"],"professores").save_local_session("logado")
                     route_control.go_to(page=self.page,route="/home")
                 
                 elif self.login_form.tipo_usuario_group.value == "aluno":
+                    temporary_session.LocalSession(dados_form["email"],"alunos").save_local_session("logado")
                     route_control.go_to(self.page,"/aluno_page")
+                    
 
             # Caso contrário exibe uma mensagem genérica
             else:

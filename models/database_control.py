@@ -1,10 +1,24 @@
 import sqlite3
 from models import criptografia_senha
 
+
+
 def database_connection():
     database = sqlite3.connect("data/database.db")
     cursor = database.cursor()
     return database, cursor
+        
+def get_professor(email):
+        database, cursor = database_connection()
+        cursor.execute("SELECT id, nome FROM professores WHERE email = ?",(email,))
+        professor = cursor.fetchone()
+        return professor
+
+def get_aluno(email):
+        database, cursor = database_connection()
+        cursor.execute("SELECT id, nome FROM alunos WHERE email = ?",(email,))
+        aluno = cursor.fetchone()
+        return aluno
 
 def get_muscles():
     database, cursor = database_connection()
@@ -29,17 +43,12 @@ def get_grupo_muscular(id_grupo_muscular):
     nome = cursor.fetchone()
     return nome[0]
 
-def get_alunos():
+def get_alunos_by_professor_id(professor_id):
     database, cursor = database_connection()
-    cursor.execute("SELECT * FROM alunos ")
+    cursor.execute("SELECT * FROM alunos WHERE id_professor = ?",(professor_id,))
     alunos = cursor.fetchall()
     return alunos
 
-def get_professor_id(username):
-    database, cursor = database_connection()
-    cursor.execute("SELECT id FROM professores WHERE username = ?",(username))
-    professor = cursor.fetchone()
-    print(professor)
 
 
 def add_exercicio(nome_exercicio,grupo_muscular):
@@ -74,23 +83,20 @@ def add_aluno(username,nome,email,senha,id_professor):
 def create_table():
     database, cursor = database_connection()
     cursor.execute("""
-                CREATE TABLE IF NOT EXISTS fichas_de_treino (
+                CREATE TABLE IF NOT EXISTS usuarios (
                 id INTEGER PRIMARY KEY,
-                id_aluno INTEGER,
-                id_exercicio INTEGER,
-                series INTEGER,
-                repeticoes INTEGER,
-                carga INTEGER
+                nome TEXT,
+                email TEXT,
+                tipo TEXT,
                 )
             """)
     database.commit()
 
+
 def add_professor():
     database, cursor = database_connection()
-    cursor.execute("INSERT INTO professores (username, email, senha, nome) VALUES (?,?,?,?)",("gab","teste@gmail.com","123456"))
+    cursor.execute("INSERT INTO professores (username, email, senha, nome) VALUES (?,?,?,?)",("admin","admin","123456"))
     database.commit()
-
-
 
 def alterar_tabela():
     database, cursor = database_connection()

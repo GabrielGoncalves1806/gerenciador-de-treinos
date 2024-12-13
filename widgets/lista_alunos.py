@@ -1,11 +1,12 @@
 import flet as ft
-from models import database_control
+from models import database_control, temporary_session
 from widgets import add_alunos
 
 class ListaAlunos():
     def __init__(self,page:ft.Page):
         self.page = page
-        self.lista_alunos = database_control.get_alunos()
+        self.session = temporary_session.LocalSession().get_session()
+        self.lista_alunos = database_control.get_alunos_by_professor_id(self.session["id"])
 
         #self.lista = ft.Column(scroll=True,horizontal_alignment=ft.CrossAxisAlignment.CENTER)
         self.lista = ft.ListView(spacing=0)
