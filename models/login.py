@@ -1,6 +1,6 @@
 
 from models.database_control import database_connection
-from models import criptografia_senha,temporary_session
+from models import criptografia_senha
 
 # Função que valida o login com os dados fornecidos no formulario
 # e verifica se correspondem com o banco de dados

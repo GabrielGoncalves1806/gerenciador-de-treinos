@@ -26,11 +26,11 @@ class LoginPage():
             if permite_logar:
                 dados_form = self.login_form.get_dados()
                 if self.login_form.tipo_usuario_group.value == "professor":
-                    temporary_session.LocalSession(dados_form["email"],"professores").save_local_session("logado")
-                    route_control.go_to(page=self.page,route="/home")
+                    temporary_session.LocalSession(dados_form["email"],"professores")
+                    route_control.go_to(page=self.page,route="/professor_page")
                 
                 elif self.login_form.tipo_usuario_group.value == "aluno":
-                    temporary_session.LocalSession(dados_form["email"],"alunos").save_local_session("logado")
+                    temporary_session.LocalSession(dados_form["email"],"alunos")
                     route_control.go_to(self.page,"/aluno_page")
                     
 

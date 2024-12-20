@@ -2,7 +2,7 @@ import views
 import views.add_workout_view
 import views.central_aluno_view
 import views.create_account_view
-import views.homeview
+import views.professor_pageview
 import views.aluno_pageview
 import views.login_view
 import views.workout_sugestion_view
@@ -24,8 +24,8 @@ def go_to(page, route, permission=None):
     elif route == "/workout_sugestion":
         views.workout_sugestion_view.WorkoutSugestionView(page)
         
-    elif route == "/home":
-        views.homeview.HomeView(page, permission)
+    elif route == "/professor_page":
+        views.professor_pageview.HomeView(page, permission)
         
     elif route == "/login_page":
         views.login_view.LoginPage(page)

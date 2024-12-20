@@ -122,4 +122,4 @@ def add_aluno(username,nome,email,senha,id_professor):
     cursor.execute("INSERT INTO alunos (username, nome, email, senha, id_professor) VALUES (?,?,?,?,?)",(username,nome,email,senha_cripto,id_professor))
     database.commit()
     
-add_aluno("jorge","jorge jorginho","jorge@gmail.com","8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",2)
+#add_aluno("jorge","jorge jorginho","jorge@gmail.com","8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",2)
