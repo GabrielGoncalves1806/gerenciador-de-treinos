@@ -1,5 +1,5 @@
 import flet as ft
-from widgets import lista_alunos, add_alunos
+from widgets import lista_alunos, personalizar_treino
 from controllers import route_control
 
 class CentralAlunos():

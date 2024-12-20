@@ -14,9 +14,9 @@ def get_professor(email):
         professor = cursor.fetchone()
         return professor
 
-def get_aluno(email):
+def get_aluno(id):
         database, cursor = database_connection()
-        cursor.execute("SELECT id, nome FROM alunos WHERE email = ?",(email,))
+        cursor.execute("SELECT id, nome FROM alunos WHERE id = ?",(id,))
         aluno = cursor.fetchone()
         return aluno
 

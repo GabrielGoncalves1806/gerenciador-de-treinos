@@ -1,9 +1,12 @@
 import flet as ft
+from models import database_control
+from controllers import route_control
 
-class DialogAddAluno():
-    def __init__(self,nome,email):
-        self.nome = nome
-        self.email = email
+class PersonalizarTreinoAluno():
+    def __init__(self,data):
+        self.data = data
+        
+        #self.aluno = database_control.get_aluno(data["id"])
         pass
         
     def salvar(self):
@@ -15,8 +18,8 @@ class DialogAddAluno():
             content=ft.Column(
                 [
                     # ft.TextField(value=sellabel="Usuário",tooltip="Nome que o alunos vai usar para logar"),
-                    ft.TextField(value=self.nome,label="Nome do Aluno",tooltip="Nome completo do aluno"),
-                    ft.TextField(value=self.email,label="E-mail"),
+                    ft.TextField(value=self.data["id"],label="Nome do Aluno",tooltip="Nome completo do aluno"),
+                    ft.TextField(label="E-mail"),
                 ]
             ),
             actions=[

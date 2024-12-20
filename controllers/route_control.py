@@ -2,6 +2,7 @@ import views
 import views.add_workout_view
 import views.central_aluno_view
 import views.create_account_view
+import views.personalizar_treino_view
 import views.professor_pageview
 import views.aluno_pageview
 import views.login_view
@@ -10,7 +11,7 @@ import views.workout_sugestion_view
 # Função de navegação entre rotas/janelas
 
 
-def go_to(page, route, permission=None):
+def go_to(page, route, data=None):
     print(route)
     for view in page.views:
         if route == view.route:
@@ -25,7 +26,7 @@ def go_to(page, route, permission=None):
         views.workout_sugestion_view.WorkoutSugestionView(page)
         
     elif route == "/professor_page":
-        views.professor_pageview.HomeView(page, permission)
+        views.professor_pageview.HomeView(page,data)
         
     elif route == "/login_page":
         views.login_view.LoginPage(page)
@@ -38,6 +39,9 @@ def go_to(page, route, permission=None):
         
     elif route == "/aluno_page":
         views.aluno_pageview.AlunoPage(page)
+    
+    elif route == "/personalizar_treino":
+        views.personalizar_treino_view.PersonalizarTreino(page,data)
 
 
 # Função que volta até a home
